@@ -38,20 +38,26 @@ class UrlController extends Controller
     {
         $data = $request->all();
         $destination = $data['destination'];
+        $url_code = $this->generateShortUrl();
+
+        $short_url = env('BASE_URL');
+        $short_url .= '/';
+        $short_url .= $url_code;
 
         $user_id = 1;
 
-        if (Auth::check())
-        {
+        if (Auth::check()) {
             $user_id = auth()->user->id;
         }
 
-        $url = Url::create([
+        Url::create([
             'visits_count' => 0,
-            'short' => $this->generateShortUrl(),
-            'destination' => $destination,
+            'short' => $url_code,
+            'destination' => urlencode($destination),
             'user_id' => $user_id
         ]);
+
+        return redirect()->route('index', ['url' => $short_url]);
     }
 
     /**
@@ -105,21 +111,18 @@ class UrlController extends Controller
         $url_code = 'a';
         $invalid = true;
 
-        while ($invalid == true)
-        {
+        while ($invalid == true) {
             $index = array_rand($chars);
             $url_code = $chars[$index];
 
-            for ($i = 0; $i < 5; $i++)
-            {
+            for ($i = 0; $i < 5; $i++) {
                 $index = array_rand($chars);
                 $url_code .= $chars[$index];
             }
 
             $in_use = Url::where('short', $url_code)->get()->first();
 
-            if ($in_use == null)
-            {
+            if ($in_use == null) {
                 $invalid = false;
             }
         }

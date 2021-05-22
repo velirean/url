@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UrlController;
+use App\Http\Controllers\RedirectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,6 @@ use App\Http\Controllers\UrlController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [RedirectController::class, 'index'])->name('index');
 
 Route::resource('url', UrlController::class);
