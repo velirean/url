@@ -14,8 +14,14 @@ class CreateUrlsTable extends Migration
     public function up()
     {
         Schema::create('urls', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->char('short', 6)->unique();
+            $table->unsignedInteger('visits_count');
+            $table->string('destination');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
