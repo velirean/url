@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html class="h-100" lang="en">
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -11,7 +11,7 @@
 
         <title>ShortUrl</title>
     </head>
-    <body>
+    <body class="h-100 bg-secondary">
         <nav class="navbar navbar-expand-lg navbar-light bg-dark">
             <div class="container">
             <a class="navbar-brand text-white" href="/">ShortUrl</a>
@@ -20,15 +20,14 @@
             </button>
 
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                <button type="button" class="btn btn-outline-light mr-3">Login</button>
-                <button type="button" class="btn btn-warning">Sign-up</button>
+                <a href="/" class="btn btn-outline-light mr-3">Iniciar Sesión</a>
+                <a href="/" class="btn btn-warning">Registrarse</a>
             </div>
             </div>
         </nav>
 
-        <div class="container">
         @yield('content')
-        </div>
+
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
