@@ -11,7 +11,7 @@
             <form action="{{ route('url.store') }}" method="post">
                 @csrf
                 <div class="form-group row px-3">
-                    <input type="text" class="col-10 form-control" name="url" id="url" placeholder="https://url.aperson.codes">
+                    <input type="text" class="col-10 form-control" name="destination" id="destination" placeholder="https://url.aperson.codes">
                     <button type="submit" class="col-2 btn btn-warning me-2">Crear</button>
                 </div>
             </form>
